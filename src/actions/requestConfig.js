@@ -4,7 +4,6 @@
 // import { browserHistory } from "react-router";
 import domain from "./domain";
 import axios from "axios";
-import {Toast} from 'antd-mobile'
 
 //设置
 const axiosInstance = axios.create({
@@ -35,7 +34,6 @@ axiosInstance.interceptors.response.use(
     let errorString = error.toString();
     console.error(error);
     if ( errorString.indexOf('of') >= 0 ){ //超时
-      Toast.fail('连接超时', 3);
     }
     return Promise.reject(error);
   }

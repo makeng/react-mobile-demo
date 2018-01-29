@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import asyncRoute from "../utils/asyncRoute";
 //样式
 import "../style/reset.less";
-import  'antd-mobile/dist/antd-mobile.css'
 /*-------------------------------------------- 路由对象 --------------------------------------------*/
 //组件
 const Login = asyncRoute(() => import("./Login"));

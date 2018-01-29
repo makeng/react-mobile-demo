@@ -10,13 +10,6 @@
     "react"
   ],
   "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "antd-mobile",
-        "style": true
-      }
-    ],
     "transform-decorators-legacy",
     "react-hot-loader/babel"
   ],
