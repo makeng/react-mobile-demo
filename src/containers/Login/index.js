@@ -7,7 +7,6 @@ date：2017年12月18日
 import React, {PureComponent, PropTypes} from "react";
 import {OfficeButton} from "../../components";
 import "../../style/containers/Login.less";
-import {crypto} from "../../utils/crypto";
 
 //
 class Login extends React.Component {
