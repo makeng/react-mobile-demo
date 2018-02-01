@@ -104,16 +104,6 @@ module.exports = {
           fallback: "style-loader",
           use: [
             "css-loader",
-            {
-              loader: "pxrem-loader",
-              options: {
-                root: 37.5,
-                fixed: 6,
-                filter: /^border/,
-                keepPx: false,
-                commentFilter: "no"
-              }
-            },
             "less-loader"
           ]
         })

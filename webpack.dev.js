@@ -13,7 +13,7 @@ module.exports = {
       // 开启 React 代码的模块热替换(HMR)
       "babel-polyfill",
       "react-hot-loader/patch",
-      "webpack-dev-server/client?http://localhost:3000", //dev 代码热替换
+      "webpack-dev-server/client?http://localhost:4000", //dev 代码热替换
       "webpack/hot/only-dev-server", //dev 代码热替换
       "./src/main" // 入口文件
     ]
@@ -33,7 +33,7 @@ module.exports = {
   devServer: {
     hot: true,
     // 开启服务器的模块热替换(HMR)
-    port: 3000,
+    port: 4000,
     contentBase: path.join(__dirname, "/"),
     // 输出文件的路径
     historyApiFallback: true,
@@ -48,7 +48,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": '"development"'
     }),
-    new OpenBrowserPlugin({ url: "http://localhost:3000" }),
+    new OpenBrowserPlugin({ url: "http://localhost:4000" }),
     new ExtractTextPlugin({
       filename: "bundle.css",
       disable: false,
@@ -88,16 +88,6 @@ module.exports = {
         use: [
           "style-loader",
           "css-loader",
-          {
-            loader: "pxrem-loader",
-            options: {
-              root: 37.5,
-              fixed: 6,
-              filter: /^border$/,
-              keepPx: false,
-              commentFilter: "no"
-            }
-          },
           "less-loader"
         ]
       },
