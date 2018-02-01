@@ -104,7 +104,6 @@ module.exports = {
           fallback: "style-loader",
           use: [
             "css-loader",
-            "postcss-loader",
             {
               loader: "pxrem-loader",
               options: {
