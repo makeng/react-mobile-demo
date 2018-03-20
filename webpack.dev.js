@@ -48,7 +48,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": '"development"'
     }),
-    new OpenBrowserPlugin({ url: "http://localhost:4000" }),
+    new OpenBrowserPlugin({url: "http://localhost:4000"}),
     new ExtractTextPlugin({
       filename: "bundle.css",
       disable: false,
@@ -84,11 +84,28 @@ module.exports = {
         include: path.join(__dirname, "src")
       },
       {
-        test: /\.(css|less)$/,
+        test: /\.css$/,
         use: [
           "style-loader",
           "css-loader",
-          "less-loader"
+        ],
+      },
+      {
+        test: /\.antd.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader", //autoprefix要通过postcss
+          "less-loader",
+        ],
+      },
+      {
+        test: /^((?!\.antd).)*less$/,
+        use: [
+          "style-loader",
+          "css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]",
+          "postcss-loader", //autoprefix要通过postcss
+          "less-loader",
         ]
       },
       {

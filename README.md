@@ -1,6 +1,6 @@
-# react-mobile-demo，react项目模板移动版
--	技术栈：react
--	说明：本项目曾经作为GreenOffice办公室系统的移动端
+# 欧瑞博智慧公寓
+-	技术栈：react + mobx
+-	说明：
 
 ## 编译命令行
 -	安装依赖：npm install
@@ -19,6 +19,7 @@
 ## 线上地址
 
 # 相关资料
+    原型：https://fvek2a.axshare.com 密码：G7788
 
 
 

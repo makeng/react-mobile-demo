@@ -7,7 +7,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {AppContainer} from "react-hot-loader";
-import Root from "./containers/Root";
+import Root from "./pages/Root";
 
 // 定义要挂载的 DOM 节点
 const mountNode = document.getElementById("app");
@@ -29,7 +29,7 @@ render(Root);
 if (module.hot && process.env.NODE_ENV !== "production") {
   // 处理对特定依赖的更改
   if (module.hot) {
-    module.hot.accept('./containers/Root', () => {
+    module.hot.accept('./pages/Root', () => {
       render(Root)
     });
   }
