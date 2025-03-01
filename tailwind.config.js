@@ -2,10 +2,6 @@ module.exports = {
   important: true,
   content: ['./src/index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    spacing: Array.from({ length: 1000 }).reduce((map, _, index) => {
-      map[index] = `${index}px`;
-      return map;
-    }, {}),
     fontSize: {
       sm: '10px',
       base: '12px',
@@ -22,4 +18,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

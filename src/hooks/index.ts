@@ -1,3 +1,1 @@
-import useConstructor from '@/hooks/useConstructor';
-
-export { useConstructor };
+export { default as useConstructor } from './useConstructor'
