@@ -1,6 +1,6 @@
 module.exports = {
   important: true,
-  content: ['./src/index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{tsx}'],
   theme: {
     fontSize: {
       sm: '10px',
