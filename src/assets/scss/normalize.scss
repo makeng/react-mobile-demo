@@ -1,0 +1,19 @@
+/*----------------------------------------------------------------------------------
+* about: 样式的覆盖/扩展
+* ----------------------------------------------------------------------------------*/
+:root {
+  --color: #212121;
+  --theme-color: #2386ee;
+  --kd-c-input-sizing-height-large: 44px;
+  --kd-c-input-font-size-large: 14px;
+  --border-radius: 8px;
+  --kd-c-button-primary-color-background-disabled: #ccc;
+  --kd-g-z-index-apex: 10;
+  --kd-c-modal-body-font-size: 14px;
+
+  color: var(--color);
+}
+
+a {
+  color: var(--theme-color);
+}
