@@ -10,7 +10,7 @@ interface Props {
 }
 
 const bem = createBEM('page')
-const DEFAULT_CLS = 'flex flex-col w-screen h-screen p-8' // 代替 scss 文件
+const DEFAULT_CLS = 'flex flex-col h-screen' // 代替 scss 文件
 
 /**
  *  页面通用样式

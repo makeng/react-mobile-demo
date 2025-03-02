@@ -1,3 +1,4 @@
+@use './assets/scss/style.min.css';
 @use './assets/scss/variables';
 @use './assets/scss/normalize';
 @use './assets/scss/override';
@@ -5,5 +6,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "@arco-design/web-react/dist/css/arco.css";
