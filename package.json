@@ -13,8 +13,7 @@
     }
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.8.1",
-    "@emotion/react": "^11.14.0",
+    "@arco-design/web-react": "^2.65.0",
     "ahooks": "^3.8.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
