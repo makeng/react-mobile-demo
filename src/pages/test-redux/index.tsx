@@ -7,7 +7,7 @@ const Index: React.FC = () => {
   return (
     <Page title="组件通信测试" className="justify-center items-center">
       <HStack>
-        <Button>Click me</Button>
+        <Button className="mb-120">Click me</Button>
         <Button>Click me</Button>
       </HStack>
     </Page>

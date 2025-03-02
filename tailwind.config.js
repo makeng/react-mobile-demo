@@ -1,6 +1,6 @@
 module.exports = {
   important: true,
-  content: ['./index.html', './src/**/*.{tsx}'],
+  content: ['./index.html', './src/**/*.tsx'],
   theme: {
     fontSize: {
       sm: '10px',

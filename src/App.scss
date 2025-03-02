@@ -1,6 +1,7 @@
-@use "tailwindcss";
 @use './assets/scss/variables';
 @use './assets/scss/normalize';
 @use './assets/scss/override';
 
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
