@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { MasterDataId } from '@/pages/test-redux/master-data/utils'
+import { MasterDataId } from '@/pages/test-redux/utils'
 
 interface StoreState {
   temp: {

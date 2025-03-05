@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { Page } from '@/components'
 import { useNavigate } from 'react-router-dom'
@@ -6,31 +6,25 @@ import { Cell, Steps } from '@arco-design/mobile-react'
 import { Pages } from '@/router/types'
 import { MasterDataId } from '@/pages/test-redux/utils'
 import { setRouterParams } from '@/router/utils/tool'
-import { isEmpty, sleep } from 'radash'
+import { sleep } from 'radash'
 import { InteractionDelay } from '@/utils/ui/ux'
-import { useMasterDataStore } from './master-data/store'
+import { useAtom } from 'jotai'
+import { tempAtom } from '@/pages/test-redux/jotai/master-data/store'
 
-const PAGE_TITLE = 'Zustand 例子'
+const PAGE_TITLE = 'Jotai 例子'
 const Step = Steps.Step
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
   const [currentStep, setCurrentStep] = useState(0)
-  // store
-  const temp = useMasterDataStore((state) => state.temp)
-
-
-  useEffect(() => {
-    if (!isEmpty(temp)) {
-      setCurrentStep(2)
-    }
-  }, [temp])
+  const [temp] = useAtom(tempAtom)
 
   function clickSelectMasterData(masterDataId: MasterDataId) {
-    const url = setRouterParams(Pages.TEST_REDUX_ZUSTAND_MD, { category: masterDataId })
+    const url = setRouterParams(Pages.TEST_REDUX_JOTAI_MD, { category: masterDataId })
     setCurrentStep(1)
     sleep(InteractionDelay.NAV)
       .then(() => navigate(url))
+      .then(() => setCurrentStep(2))
   }
 
   return (

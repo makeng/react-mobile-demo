@@ -9,7 +9,7 @@ const PAGE_TITLE = '组件通信测试'
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
-  const list = [Pages.TEST_REDUX_ZUSTAND]
+  const list = [Pages.TEST_REDUX_ZUSTAND, Pages.TEST_REDUX_JOTAI]
 
   return (
     <Page title={PAGE_TITLE}>

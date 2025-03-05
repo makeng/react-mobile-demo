@@ -16,7 +16,7 @@
     "@arco-design/mobile-react": "^2.35.1",
     "ahooks": "^3.8.4",
     "classnames": "^2.5.1",
-    "dayjs": "^1.11.13",
+    "jotai": "^2.12.1",
     "js-cookie": "^3.0.5",
     "radash": "^12.1.0",
     "react": "^19.0.0",

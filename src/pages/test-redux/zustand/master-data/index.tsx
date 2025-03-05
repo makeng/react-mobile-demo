@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Page } from '@/components'
-import { Avatar, Cell, Tag } from '@arco-design/mobile-react'
+import { Cell } from '@arco-design/mobile-react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { getMasterDataList, MasterDataId } from '@/pages/test-redux/master-data/utils'
-import { useMasterDataStore } from '@/pages/test-redux/master-data/store'
+import { getAvatar, getMasterDataList, MasterDataId } from '@/pages/test-redux/utils'
+import { useMasterDataStore } from '@/pages/test-redux/zustand/master-data/store'
 
 const PAGE_TITLE = '基础资料'
 
@@ -19,16 +19,6 @@ const Index: React.FC = () => {
   function clickSelectMasterData(item) {
     select(masterDataId, item)
     navigate(-1)
-  }
-
-  function getAvatar(avatar: string) {
-    const isFile = avatar.includes('.')
-    const commonProps = {
-      className: 'mr-1',
-    }
-    return isFile
-      ? <Avatar src={avatar} {...commonProps} />
-      : <Tag {...commonProps}>{avatar}</Tag>
   }
 
   return (
