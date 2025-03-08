@@ -6,6 +6,7 @@ interface StoreState {
     [key in MasterDataId]?: any;
   };
   select: (id: MasterDataId, value: any) => void;
+  reset(): void;
 }
 
 export const useMasterDataStore = create<StoreState>((set) => ({
@@ -20,4 +21,5 @@ export const useMasterDataStore = create<StoreState>((set) => ({
         temp: nextTemp,
       }
     }),
+  reset: () => set({ temp: {} }),
 }))

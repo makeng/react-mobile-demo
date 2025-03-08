@@ -4,7 +4,7 @@ import { Page } from '@/components'
 import { Cell } from '@arco-design/mobile-react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getAvatar, getMasterDataList, MasterDataId } from '@/pages/test-redux/utils'
-import { useMasterDataStore } from '@/pages/test-redux/zustand/master-data/store'
+import { tempObservable } from '@/pages/test-redux/proxy/master-data/store'
 
 const PAGE_TITLE = '基础资料'
 
@@ -13,11 +13,10 @@ const Index: React.FC = () => {
   const [searchParams] = useSearchParams()
   const masterDataId = searchParams.get('category') as unknown as MasterDataId
   const list = getMasterDataList(masterDataId)
-  // store
-  const mdStore = useMasterDataStore()
 
   function clickSelectMasterData(item) {
-    mdStore.select(masterDataId, item)
+    console.log('设置', masterDataId, item)
+    tempObservable.proxy[masterDataId] = item
     navigate(-1)
   }
 
