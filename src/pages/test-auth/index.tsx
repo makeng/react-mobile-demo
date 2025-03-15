@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Page } from '@/components'
 import { Steps } from '@arco-design/mobile-react'
 import AuthSwitchList from '@/pages/test-auth/components/AuthSwitchList'
-import ButtonList from '@/pages/test-auth/components/BtnsWithProvider'
+import BtnsWithProvider from '@/pages/test-auth/components/BtnsWithProvider'
 import AuthProvider from '@/pages/test-auth/components/AuthProvider'
-import { sleep } from 'radash'
-import { InteractionDelay } from '@/utils/ui/ux'
+import BtnsWithListener from '@/pages/test-auth/components/BtnsWithListener'
 
 const Index: React.FC = () => {
   const [step, setStep] = useState(0)
 
-  useEffect(() => {
-    if (step === 2) sleep(InteractionDelay.ONE_SECOND).then(() => setStep(0)) // 复位
-  }, [step])
+  const changeBtnAuth = () => setStep(2)
 
   return (
     <Page title="权限（异步更新）测试">
@@ -24,8 +21,10 @@ const Index: React.FC = () => {
       <AuthSwitchList onChange={() => setStep(1)} />
       {/* context 方式实现 */}
       <AuthProvider>
-        <ButtonList onChange={() => setStep(2)} />
+        <BtnsWithProvider onChange={changeBtnAuth} />
       </AuthProvider>
+      {/* Listener 方式实现 */}
+      <BtnsWithListener onChange={changeBtnAuth} />
     </Page>
   )
 }

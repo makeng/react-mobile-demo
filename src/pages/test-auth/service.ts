@@ -21,7 +21,10 @@ export const DEFAULT_AUTH_DATA_LIST = [
 ]
 
 class AuthData {
-  private list = structuredClone(DEFAULT_AUTH_DATA_LIST)
+  private list: AuthItem[]
+  constructor(list: AuthItem[]) {
+    this.list = structuredClone(list)
+  }
   getList() {
     return clone(this.list)
   }
@@ -32,7 +35,7 @@ class AuthData {
   }
 }
 
-const authData = new AuthData()
+export const authData = new AuthData(DEFAULT_AUTH_DATA_LIST)
 
 export function fetchAuthDataList() {
   return sleep(InteractionDelay.MOCK_REQUEST).then(() => authData.getList())

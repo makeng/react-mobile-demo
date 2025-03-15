@@ -1,9 +1,8 @@
-import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
+import React, { createContext, PropsWithChildren, useContext, useEffect, useReducer, useRef } from 'react'
 import { AuthItem, AuthKey, fetchAuthDataList } from '@/pages/test-auth/service'
 import { IntervalPoller } from '@/packages/interval-poller'
 import { InteractionDelay } from '@/utils/ui/ux'
 import { isEqual } from 'radash'
-import { useLatest } from 'ahooks'
 
 interface AuthContextValue {
   checkRight: (key: AuthKey) => boolean;
@@ -16,16 +15,18 @@ const AuthContext = createContext<AuthContextValue>({ checkRight: () => false })
  * @constructor
  */
 const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
-  const [authDataList, setAuthDataList] = useState<AuthItem[]>([])
-  const lastAuthDataList = useLatest(authDataList)
+  const authDataList = useRef<AuthItem[]>([]) // 为了性能，不应把大型数组放在 state 中
+  const [_, forceUpdate] = useReducer(x => x + 1, 0)
 
   useEffect(() => {
+    // 轮询器来模拟 websocket 长连接
     const poller = new IntervalPoller(InteractionDelay.MOCK_REQUEST)
     poller.start(() => {
       fetchAuthDataList().then(nextList => {
-        if (!isEqual(nextList, lastAuthDataList.current)) {
-          setAuthDataList(nextList)
-          console.log('检测到变化', nextList, lastAuthDataList.current)
+        if (!isEqual(nextList, authDataList.current)) {
+          authDataList.current = nextList
+          forceUpdate()
+          console.table(nextList)
         }
       })
     })
@@ -36,7 +37,7 @@ const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   }, [])
 
   function checkRight(key: AuthKey) {
-    const targetAuthItem = authDataList.find(item => item.key === key)
+    const targetAuthItem = authDataList.current.find(item => item.key === key)
     return (targetAuthItem?.value ?? false)
   }
 
