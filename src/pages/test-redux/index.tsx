@@ -5,14 +5,13 @@ import { Page } from '@/components'
 import { Cell } from '@arco-design/mobile-react'
 import { Pages } from '@/router/types'
 
-const PAGE_TITLE = '组件通信测试'
 const pageList = [Pages.TEST_REDUX_ZUSTAND, Pages.TEST_REDUX_JOTAI, Pages.TEST_REDUX_PROXY]
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
 
   return (
-    <Page title={PAGE_TITLE}>
+    <Page title="组件通信测试">
       <Cell.Group>
         {pageList.map(path =>
           <Cell

@@ -1,19 +1,14 @@
 /*----------------------------------------------------------------------------------
  * desc: 交互相关功能
  * ----------------------------------------------------------------------------------*/
+
 export enum InteractionDelay {
   /** 点击的延迟时间 */
   CLICK = 20,
+  /** DOM 加载的延迟时间。只是模拟，并不代表真实 */
+  DOM_LOAD = 100,
   /** 导航的延迟时间 */
   NAV = 500,
+  /** 模拟请求的延迟时间 */
+  MOCK_REQUEST = 500,
 }
-
-/**
- * 判定位窄屏幕
- */
-export const checkIsSmallScreen = () => {
-  const { clientWidth } = document.documentElement;
-  const HIGH_PIXEL = 750;
-
-  return clientWidth < HIGH_PIXEL;
-};
