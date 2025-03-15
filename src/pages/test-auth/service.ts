@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------
 * desc: 模拟接口
 * ----------------------------------------------------------------------------------*/
-import { sleep } from 'radash'
+import { clone, set, sleep } from 'radash'
 import { InteractionDelay } from '@/utils/ui/ux'
 
 export enum AuthKey {
@@ -10,36 +10,25 @@ export enum AuthKey {
   DELETE,
 }
 
+export class AuthItem {
+  constructor(public key: AuthKey, public name: string, public value: boolean) {}
+}
+
+export const DEFAULT_AUTH_DATA_LIST = [
+  new AuthItem(AuthKey.CHECK, '查看', true),
+  new AuthItem(AuthKey.EDIT, '编辑', true),
+  new AuthItem(AuthKey.DELETE, '删除', true),
+]
+
 class AuthData {
-  private list = [
-    {
-      key: AuthKey.CHECK,
-      name: '查看',
-      value: true,
-    },
-    {
-      key: AuthKey.EDIT,
-      name: '编辑',
-      value: true,
-    },
-    {
-      key: AuthKey.DELETE,
-      name: '删除',
-      value: true,
-    },
-  ]
+  private list = structuredClone(DEFAULT_AUTH_DATA_LIST)
   getList() {
-    return this.list
+    return clone(this.list)
   }
   setItemValue(key: AuthKey, value: boolean) {
-    const item = this.list.find((item) => item.key === key)
-    if (item) {
-      item.value = value
-    }
-    console.log('权限数据异步修改：', this.list)
-  }
-  getItem(key: AuthKey) {
-    return this.list.find((item) => item.key === key)
+    this.list = this.getList().map((item) =>
+      item.key === key ? set(item, 'value', value) : item,
+    )
   }
 }
 

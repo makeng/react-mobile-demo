@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Page } from '@/components'
-import { Button, Cell, Loading, Steps, Switch } from '@arco-design/mobile-react'
-import { AuthKey, fetchAuthDataList, postAuthDataItem } from '@/pages/test-auth/components/Auth/utils'
+import { Steps } from '@arco-design/mobile-react'
+import AuthSwitchList from '@/pages/test-auth/components/AuthSwitchList'
+import ButtonList from '@/pages/test-auth/components/BtnsWithProvider'
+import AuthProvider from '@/pages/test-auth/components/AuthProvider'
+import { sleep } from 'radash'
+import { InteractionDelay } from '@/utils/ui/ux'
 
 const Index: React.FC = () => {
   const [step, setStep] = useState(0)
-  const [authDataList, setAuthDataList] = useState<Obj[]>([])
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
-    fetchAuthDataList().then(setAuthDataList).finally(() => setLoading(false))
-  }, [])
-
-  function changeSwitch(key: AuthKey, on: boolean) {
-    setStep(1)
-    setLoading(true)
-    const nextList = authDataList.map(item => {
-      if (item.key === key) {
-        return {
-          ...item,
-          value: on,
-        }
-      }
-      return item
-    })
-    setAuthDataList(nextList)
-    postAuthDataItem(AuthKey.CHECK, on)
-      .finally(() => setLoading(false))
-  }
+    if (step === 2) sleep(InteractionDelay.ONE_SECOND).then(() => setStep(0)) // 复位
+  }, [step])
 
   return (
     <Page title="权限（异步更新）测试">
@@ -37,24 +21,11 @@ const Index: React.FC = () => {
         <Steps.Step title="发出请求修改权限数据" />
         <Steps.Step title="按钮监听到变化" />
       </Steps>
-      <Cell.Group header={<><span className="inline-block mr-2">权限开关</span>{loading && <Loading />}</>}>
-        {authDataList.map(item =>
-          <Cell key={item.id} label={item.name}>
-            <Switch
-              checked={item.value}
-              onChange={(on) => changeSwitch(item.key as AuthKey, on)}
-            />
-          </Cell>,
-        )}
-      </Cell.Group>
-      {/* 按钮列表 */}
-      <Cell.Group header="按钮列表" className="mt-4">
-        <Cell className="flex-row">
-          {authDataList.map(item =>
-            <Button type="ghost" className="mx-1">{item.name}</Button>,
-          )}
-        </Cell>
-      </Cell.Group>
+      <AuthSwitchList onChange={() => setStep(1)} />
+      {/* context 方式实现 */}
+      <AuthProvider>
+        <ButtonList onChange={() => setStep(2)} />
+      </AuthProvider>
     </Page>
   )
 }
