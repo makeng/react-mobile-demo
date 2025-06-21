@@ -12,6 +12,7 @@ export enum Pages {
   TEST_REDUX_PROXY = '/test-redux/proxy',
   TEST_REDUX_PROXY_MD = '/test-redux/proxy/master-data',
   TEST_AUTH = '/test-auth',
+  TEST_FUNCTIONAL_UPDATE = '/test-functional-update',
 }
 
 export type Route = RouteObject & {

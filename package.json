@@ -48,7 +48,7 @@
     "tailwindcss": "^3.4.17",
     "terser": "^5.39.0",
     "typescript": "^5.8.2",
-    "vite": "^6.2.2",
+    "vite": "6.3.4",
     "vite-svg-loader": "^5.1.0",
     "vite-tsconfig-paths": "^5.1.4"
   }

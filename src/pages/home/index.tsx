@@ -6,7 +6,7 @@ import { Pages } from '@/router/types'
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
-  const list = [Pages.TEST_REDUX, Pages.TEST_AUTH]
+  const list = [Pages.TEST_REDUX, Pages.TEST_AUTH, Pages.TEST_FUNCTIONAL_UPDATE]
 
   return (
     <Page title="首页">

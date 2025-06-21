@@ -18,8 +18,7 @@ const Index: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   // store
   const temp = useMasterDataStore((state) => state.temp)
-
-
+  
   useEffect(() => {
     if (!isEmpty(temp)) {
       setCurrentStep(2)
