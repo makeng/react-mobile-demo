@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Page } from '@/components'
 import { Button, Cell, Input, NoticeBar } from '@arco-design/mobile-react'
-import { sleep } from 'radash'
+import { shuffle } from 'radash'
 
 // 列表的项
 class Item {
@@ -36,9 +36,9 @@ const Index: React.FC = () => {
     setList2(prev => [...prev, new Item()])
   }
   function clickExecAll() {
-    const randomMs = Math.random() * 1000
-    clickPushList()
-    sleep(10).then(clickAllAdd)
+    const randomizedEvents = shuffle([clickAllAdd, clickPushList])
+    randomizedEvents.forEach(fn => fn())
+    // new PromiseQueue(randomizedEvents) // 即使是 Promise 也救不了普通更新的混乱
   }
   return (
     <Page title="普通更新 vs 函数式更新">
@@ -52,7 +52,7 @@ const Index: React.FC = () => {
           <NoticeBar>普通更新无法应对多个事件同时发生</NoticeBar>
           {list1.map(({ id, value }) => (
             <Cell key={id} label="输入">
-              <Input className="w-8" value={value} placeholder="数量"
+              <Input className="w-6" value={value} placeholder="数量"
                      inputStyle={{ textAlign: 'right' }}
               />
             </Cell>
@@ -62,7 +62,7 @@ const Index: React.FC = () => {
           <NoticeBar>函数式更新可以应对！</NoticeBar>
           {list2.map(({ id, value }) => (
             <Cell key={id} label="输入">
-              <Input className="w-8" value={value} placeholder="数量"
+              <Input className="w-6" value={value} placeholder="数量"
                      inputStyle={{ textAlign: 'right' }}
               />
             </Cell>
