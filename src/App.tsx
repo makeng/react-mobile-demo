@@ -4,10 +4,10 @@ import './App.scss'
 import { router } from './router'
 import setRootPixel from '@arco-design/mobile-react/tools/flexible'
 import { last } from 'radash'
-import { useMasterDataStore } from '@/pages/test-redux/zustand/master-data/store'
+import { useMasterDataStore } from '@/pages/demo-redux/zustand/master-data/store'
 import { useAtom } from 'jotai'
-import { tempAtom } from '@/pages/test-redux/jotai/master-data/store'
-import { tempObservable } from '@/pages/test-redux/proxy/master-data/store'
+import { tempAtom } from '@/pages/demo-redux/jotai/master-data/store'
+import { tempObservable } from '@/pages/demo-redux/proxy/master-data/store'
 
 
 function App() {

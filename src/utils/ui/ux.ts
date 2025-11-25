@@ -11,5 +11,5 @@ export enum InteractionDelay {
   /** 导航的延迟时间 */
   NAV = 500,
   /** 模拟请求的延迟时间 */
-  MOCK_REQUEST = 500,
+  MOCK_REQUEST = 300,
 }

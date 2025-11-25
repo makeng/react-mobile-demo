@@ -1,21 +1,19 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { Page } from '@/components'
 import { Cell } from '@arco-design/mobile-react'
 import { Pages } from '@/router/types'
 
+const pageList = [Pages.DEMO_REDUX_ZUSTAND, Pages.DEMO_REDUX_JOTAI, Pages.DEMO_REDUX_PROXY]
+
 const Index: React.FC = () => {
   const navigate = useNavigate()
-  // 所有的一级页面。子页面不需要展示在这里
-  const pagesWithSecondary = Object.values(Pages).filter(path => {
-    const levels = path.split('/').length
-    return levels === 2
-  })
 
   return (
-    <Page title="首页">
+    <Page title="组件通信测试">
       <Cell.Group>
-        {pagesWithSecondary.map(path =>
+        {pageList.map(path =>
           <Cell
             key={path} label={path} showArrow
             onClick={() => navigate(path)}
